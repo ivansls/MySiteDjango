@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block navig %}
+    <nav class="nav col-md-4 justify-content-center" >
+        <div class="nav-item"><a class="nav-link px-2 text-body-secondary" href="{% url 'StorePage' %}">На главную</a></div>
+        <div class="nav-item"><a class="nav-link px-2 text-body-secondary" href="{% url 'ProductChange' list_card.id %}">Изменеие товара</a></div>
+        <div class="nav-item"><a class="nav-link px-2 text-body-secondary" href="{% url 'deleteProduct' list_card.id %}">Удаление товара</a></div>
+    </nav>
+{% endblock %}
+{% block contentent %}
+    <div style="display: flex; justify-content: space-between">
+            <div style="background-color: #d6b2ff; width: 20%; margin: 0.5vw; border-radius: 10px;display: flex; flex-direction: column">
+{#                <h1 style="text-align: center">Доп контент (PrWithDrawal)</h1>#}
+
+
+                    {% for ele in list_card.tag.all %}
+                        <a style="color: #ffe468" href="{% url 'get_by_tag' ele.name %}">{{ ele }}</a>
+                    {% endfor %}
+
+            </div>
+            <div style="background-color: #ffcc9a; width: 90%; margin: 0.5vw; border-radius: 10px; display: flex; flex-direction: row; flex-wrap: wrap; align-content: center; justify-content: center">
+                <div class="card" style="width: 18rem;margin: 10px; display: flex; flex-direction: row; width: 100%">
+                        {% if list_card.photo %}
+                            <img style="padding: 10px; border-radius: 10px; width: 500px;" src="{{ list_card.photo.url }}" class="card-img-top" alt="...">
+                        {% else %}
+                            <img src="..." class="card-img-top" alt="...">
+                        {% endif %}
+                        <div >
+                            <h4 style="padding-top: 10px" class="card-title">{{ list_card.name }}</h4>
+                            <p class="card-text">{{ list_card.discription }}</p>
+                            <p class="card-title">{{ list_card.price }} ₽</p>
+                            <p class="card-text">Наличие - {{ list_card.exist }}</p>
+                            <a  class="btn btn-primary" href={% url 'ProductWithdraw' list_card.id %}>КУПИТЬ</a>
+                        </div>
+                    </div>
+{#            {% for element in list_card %}#}
+{#                {% if element.id == temp %}#}
+{#                    #}
+{#                {% endif %}#}
+{#            {% endfor %}#}
+            </div>
+            <div style="background-color: #d6b2ff; width: 20%; margin: 0.5vw; border-radius: 10px">
+{#                <h1 style="text-align: center">Доп контент (PrWithDrawal)</h1>#}
+
+                <a style="color: #ffe468" href="{% url 'get_by_category' list_card.category %}">{{ list_card.category }}</a>
+
+            </div>
+        </div>
+{% endblock %}

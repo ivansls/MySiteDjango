@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block navig %}
+    <nav class="nav col-md-4 justify-content-center" >
+        <div class="nav-item"><a class="nav-link px-2 text-body-secondary" href="{% url 'Api' %}">На главную</a></div>
+        <div class="nav-item"><a class="nav-link px-2 text-body-secondary">Сохранить</a></div>
+    </nav>
+{% endblock %}
+
+
+{% block contentent %}
+    <div style="display: flex; justify-content: space-between">
+            <div style="background-color: #d6b2ff; width: 20%; margin: 0.5vw; border-radius: 10px">
+                <h1 style="text-align: center">Доп контент(DellNote)</h1>
+            </div>
+
+            <div style="background-color: #ffcc9a; width: 100%; margin: 0.5vw; border-radius: 10px">
+                <h3 style="text-align: center">Удаление элемента туть</h3>
+            </div>
+
+            <div style="background-color: #d6b2ff; width: 20%; margin: 0.5vw; border-radius: 10px">
+                <h1 style="text-align: center">Доп контент(DellNote)</h1>
+            </div>
+        </div>
+{% endblock %}
